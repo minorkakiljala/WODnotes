@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Dimensions, StatusBar } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-export default function Timer () {
+/**
+ * The function for the timer of the app
+ */
+export default function Timer ({remainingSecs, setRemainingSecs, isActive, setIsActive}) {
 
     const screen1 = Dimensions.get('window');
 
@@ -14,14 +17,19 @@ export default function Timer () {
         return{mins: formatNumber(mins), secs: formatNumber(secs)};
     }
 
-    const [remainingSecs, setRemainingSecs] = useState(0);
-    const [isActive, setIsActive] = useState(false);
+    
     const {mins, secs} = getRemaining(remainingSecs);
 
+    /** Starts the startbutton*/
     const toggle = () =>{
         setIsActive(!isActive)
     }
 
+    /**This EffectHook uses setinterval -method to update the value of remainingSecs
+     * every second and re-rended the component
+     * useState -hook stores the variable remainingSecs and keeps the flag
+     * isActive
+     */
     useEffect(() => {
         let interval = null;
         if (isActive){
@@ -35,13 +43,24 @@ export default function Timer () {
         return () => clearInterval(interval);
       }, [isActive, remainingSecs]);
 
+      /** Reset function for the reset button */
+      const reset = () =>{
+          setRemainingSecs(0);
+          setIsActive(false);
+      }
+
     return (
         <View style = {styles.container}>
             <StatusBar barStyle= 'light-content' />
             <Text style = {styles.timerText}>{`${mins}:${secs}`}</Text>
             <TouchableOpacity onPress={toggle} style = {styles.button} >
-                <Text style={styles.text}>{isActive ? 'Pause' : 'Start'}</Text>
-            </TouchableOpacity>   
+            <Text style={styles.text}>{isActive ? 'Pause' : 'Start'}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={reset} style = {[styles.button, styles.buttonReset]}>
+                <Text style={[styles.text, styles.buttonTextReset]}>Reset</Text>
+            </TouchableOpacity>
+                
+            
         </View>
     )
 }
@@ -70,6 +89,13 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 90,
         marginBottom: 20
+    },
+    buttonReset: {
+        marginTop: 20,
+        borderColor: '#FF851B'
+    },
+    buttonTextReset: {
+        color: '#FF851B'
     }
 
 

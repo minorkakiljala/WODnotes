@@ -4,9 +4,9 @@ import Header from './header';
 import NoteItem from './noteItem';
 import AddNote from './addNote';
 
-export default function Appsto() {
-  const [notes, setNotes] = useState([
-  ]);
+export default function Appsto({notes, setNotes}) {
+  
+console.log(notes)
 
   const pressHandler = (key) => {
     setNotes(prevNotes => {

@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 
-export default function Calculator() {
-
-    const [state, setState] = useState(" ")
-    const [operator, setOperator] = useState(null)
-    const [prevVal, setPrevVal] = useState(null)
+/** The function for the calculator of the app
+ * 
+ */
+export default function Calculator({state, setState, operator, setOperator, prevVal, setPrevVal}) {
 
 
 
@@ -27,9 +26,12 @@ export default function Calculator() {
         if (type === "operation" & resultText == '+/-') {
             setState(`${parseFloat(state) * -1}`)
         }
+        if(type === "number" & resultText == '.'){
+            setState(`${parseFloat(state)}${resultText}`)
+        }
         if (type === "number" & resultText === '=') {
-            const current = parseFloat(state);
-            const previous = parseFloat(prevVal)
+            let current = parseFloat(state);
+            let previous = parseFloat(prevVal)
 
             if (operator === "+") {
                 setState(previous + current);
@@ -56,7 +58,7 @@ export default function Calculator() {
     }
 
     let rows = []
-    let nums = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [',', 0, '=']]
+    let nums = [[1, 2, 3], [4, 5, 6], [7, 8, 9], ['.', 0, '=']]
     for (let i = 0; i < 4; i++) {
         let row = []
         for (let j = 0; j < 3; j++) {
@@ -100,7 +102,7 @@ export default function Calculator() {
         </View>
     )
 }
-
+/** CSS code for the style of the app */
 const styles = StyleSheet.create({
     container: {
         flex: 1
