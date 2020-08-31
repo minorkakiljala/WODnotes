@@ -5,7 +5,7 @@ An app to write down the WODs and calculate appropriate weigths from the percent
 
 Install Expo CLI, with following command:
 
-# npm install -g expo-cli
+npm install -g expo-cli
 
 # Features
 
