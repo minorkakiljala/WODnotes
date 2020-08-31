@@ -9,6 +9,12 @@ Install Expo CLI, with following command:
 
 You can download Expo Client App for IOS/Android from Apple Store/Google Play
 
+Download the project and run it in terminal with a command:
+
+*npm start
+
+This will open a window in the browser and it will give options how you want to view the app.
+
 
 
 # Features
