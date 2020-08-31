@@ -3,6 +3,10 @@ An app to write down the WODs and calculate appropriate weigths from the percent
 
 ## Getting started
 
+Install Expo CLI, with following command:
+
+# npm install -g expo-cli
+
 # Features
 
 * The app is distributed in three components: calculator, timer and notebook
