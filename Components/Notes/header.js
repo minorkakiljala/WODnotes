@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, StyleSheet} from 'react-native';
 
-
+/** Header part of the app, just visuals */
 export default function Header(){
     return(
         <View style={styles.header}>

@@ -8,6 +8,10 @@ export default function AddNote({ submitHandler }) {
     setText(val);
   };
 
+
+  /** Returns the input on screen written to the placeholder
+   * ADD WOD -button functionality in index.js
+   */
   return (
     <View>
       <TextInput 

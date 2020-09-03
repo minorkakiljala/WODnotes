@@ -7,13 +7,19 @@ import AddNote from './addNote';
 export default function Appsto({notes, setNotes}) {
   
 console.log(notes)
-
+  /** Pressing the note item will remove the value from the list
+   * Cannot be returned back, clears the value
+   */
   const pressHandler = (key) => {
     setNotes(prevNotes => {
       return prevNotes.filter(notes => notes.key != key);
     });
   };
 
+  /** Submits the value of placeholder on screen, won't push the value if zero
+   * Allows only values that doesn't exist, if exist will give 
+   * an alert onPress
+   */
   const submitHandler = (text, clear) => {
         if(notes.filter(el => el.text === text).length === 0){
         () => clear()

@@ -7,7 +7,7 @@ import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 export default function Calculator({state, setState, operator, setOperator, prevVal, setPrevVal}) {
 
 
-
+    /** The functionality of the calculator */
     const buttonPressed = (type, resultText) => {
         if (type === "number" & resultText != '=') {
             setState(`${state}${resultText}`)
@@ -57,6 +57,9 @@ export default function Calculator({state, setState, operator, setOperator, prev
 
     }
 
+    /** The numbers and operations are created in the for loops
+     * and they get the functionality of calculator buttonPressed
+    */
     let rows = []
     let nums = [[1, 2, 3], [4, 5, 6], [7, 8, 9], ['.', 0, '=']]
     for (let i = 0; i < 4; i++) {

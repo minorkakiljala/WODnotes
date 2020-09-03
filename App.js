@@ -24,7 +24,9 @@ export default function App() {
   const [notes, setNotes] = useState([
   ]);
 
-
+ /** The actual view rendering on the screen. The other page includes Timer and the other Notes and Calculator
+  * Includes the functionality of press me -button, which changes the view
+  */
   return (
     <View>
       <ScrollView>
